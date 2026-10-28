@@ -71,7 +71,6 @@ Display original color image, histogram, enhanced image, and enhanced histogram 
 
 ## Program
 
-```
 Developed By:
 Name: Tharun S
 
@@ -83,12 +82,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Step 1: Read the image in grayscale
+```
 gray = cv2.imread('Cattt.jpg', cv2.IMREAD_GRAYSCALE)
 
 if gray is None:
     print("Error: Image not found. Check the file path.")
 else:
-    # Step 2: Display grayscale image and histogram
+```
+# Step 2: Display grayscale image and histogram
+```
     plt.figure(figsize=(10, 8))
 
     plt.subplot(2, 2, 1)
@@ -99,8 +101,9 @@ else:
     plt.subplot(2, 2, 2)
     plt.hist(gray.ravel(), 256, [0, 256])
     plt.title('Original Histogram')
-
-    # Step 3: Apply histogram equalization
+```
+# Step 3: Apply histogram equalization
+```
     equalized = cv2.equalizeHist(gray)
 
     plt.subplot(2, 2, 3)
@@ -114,8 +117,9 @@ else:
 
     plt.tight_layout()
     plt.show()
-
-    # Step 4: Read the image in color
+```
+# Step 4: Read the image in color
+```
     img = cv2.imread('Cattt.jpg', cv2.IMREAD_COLOR)
 
     if img is not None:
@@ -138,21 +142,26 @@ else:
 
         plt.tight_layout()
         plt.show()
-
-        # Step 6: Convert BGR to HSV
+```
+# Step 6: Convert BGR to HSV
+```
         hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-
-        # Step 7: Split HSV channels
+```
+# Step 7: Split HSV channels
+```
         h, s, v = cv2.split(hsv)
-
-        # Step 8: Equalize the V channel
+```
+# Step 8: Equalize the V channel
+```
         v_eq = cv2.equalizeHist(v)
-
-        # Step 9: Merge channels and convert back to BGR
+```
+# Step 9: Merge channels and convert back to BGR
+```
         hsv_eq = cv2.merge([h, s, v_eq])
         enhanced = cv2.cvtColor(hsv_eq, cv2.COLOR_HSV2BGR)
-
-        # Step 10: Display original and enhanced color images
+```
+# Step 10: Display original and enhanced color images
+```
         plt.figure(figsize=(10, 8))
 
         plt.subplot(2, 2, 1)
