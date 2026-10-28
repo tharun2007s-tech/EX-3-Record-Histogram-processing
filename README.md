@@ -91,99 +91,101 @@ else:
 ```
 # Step 2: Display grayscale image and histogram
 ```
-    plt.figure(figsize=(10, 8))
+plt.figure(figsize=(10, 8))
 
-    plt.subplot(2, 2, 1)
-    plt.imshow(gray, cmap='gray')
-    plt.title('Original Grayscale Image')
-    plt.axis('off')
+plt.subplot(2, 2, 1)
+plt.imshow(gray, cmap='gray')
+plt.title('Original Grayscale Image')
+plt.axis('off')
 
-    plt.subplot(2, 2, 2)
-    plt.hist(gray.ravel(), 256, [0, 256])
-    plt.title('Original Histogram')
+plt.subplot(2, 2, 2)
+plt.hist(gray.ravel(), 256, [0, 256])
+plt.title('Original Histogram')
 ```
 # Step 3: Apply histogram equalization
 ```
-    equalized = cv2.equalizeHist(gray)
+equalized = cv2.equalizeHist(gray)
 
-    plt.subplot(2, 2, 3)
-    plt.imshow(equalized, cmap='gray')
-    plt.title('Equalized Image')
-    plt.axis('off')
+plt.subplot(2, 2, 3)
+plt.imshow(equalized, cmap='gray')
+plt.title('Equalized Image')
+plt.axis('off')
 
-    plt.subplot(2, 2, 4)
-    plt.hist(equalized.ravel(), 256, [0, 256])
-    plt.title('Equalized Histogram')
+plt.subplot(2, 2, 4)
+plt.hist(equalized.ravel(), 256, [0, 256])
+plt.title('Equalized Histogram')
 
-    plt.tight_layout()
-    plt.show()
+plt.tight_layout()
+plt.show()
 ```
 # Step 4: Read the image in color
 ```
-    img = cv2.imread('Cattt.jpg', cv2.IMREAD_COLOR)
+img = cv2.imread('Cattt.jpg', cv2.IMREAD_COLOR)
 
-    if img is not None:
-        # Step 5: Split B, G, R channels
-        b, g, r = cv2.split(img)
+if img is not None:
+```
+# Step 5: Split B, G, R channels
+```
+b, g, r = cv2.split(img)
 
-        plt.figure(figsize=(12, 4))
+plt.figure(figsize=(12, 4))
 
-        plt.subplot(1, 3, 1)
-        plt.hist(b.ravel(), 256, [0, 256])
-        plt.title('Blue Histogram')
+plt.subplot(1, 3, 1)
+plt.hist(b.ravel(), 256, [0, 256])
+plt.title('Blue Histogram')
 
-        plt.subplot(1, 3, 2)
-        plt.hist(g.ravel(), 256, [0, 256])
-        plt.title('Green Histogram')
+plt.subplot(1, 3, 2)
+plt.hist(g.ravel(), 256, [0, 256])
+plt.title('Green Histogram')
 
-        plt.subplot(1, 3, 3)
-        plt.hist(r.ravel(), 256, [0, 256])
-        plt.title('Red Histogram')
+plt.subplot(1, 3, 3)
+plt.hist(r.ravel(), 256, [0, 256])
+plt.title('Red Histogram')
 
-        plt.tight_layout()
-        plt.show()
+plt.tight_layout()
+plt.show()
 ```
 # Step 6: Convert BGR to HSV
 ```
-        hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 ```
 # Step 7: Split HSV channels
 ```
-        h, s, v = cv2.split(hsv)
+h, s, v = cv2.split(hsv)
 ```
 # Step 8: Equalize the V channel
 ```
-        v_eq = cv2.equalizeHist(v)
+v_eq = cv2.equalizeHist(v)
 ```
 # Step 9: Merge channels and convert back to BGR
 ```
-        hsv_eq = cv2.merge([h, s, v_eq])
-        enhanced = cv2.cvtColor(hsv_eq, cv2.COLOR_HSV2BGR)
+hsv_eq = cv2.merge([h, s, v_eq])
+enhanced = cv2.cvtColor(hsv_eq, cv2.COLOR_HSV2BGR)
 ```
 # Step 10: Display original and enhanced color images
 ```
-        plt.figure(figsize=(10, 8))
+plt.figure(figsize=(10, 8))
 
-        plt.subplot(2, 2, 1)
-        plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-        plt.title('Original Color Image')
-        plt.axis('off')
+plt.subplot(2, 2, 1)
+plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+plt.title('Original Color Image')
+plt.axis('off')
 
-        plt.subplot(2, 2, 2)
-        plt.hist(img.ravel(), 256, [0, 256])
-        plt.title('Original Color Histogram')
+plt.subplot(2, 2, 2)
+plt.hist(img.ravel(), 256, [0, 256])
+plt.title('Original Color Histogram')
 
-        plt.subplot(2, 2, 3)
-        plt.imshow(cv2.cvtColor(enhanced, cv2.COLOR_BGR2RGB))
-        plt.title('Enhanced Color Image')
-        plt.axis('off')
+plt.subplot(2, 2, 3)
+plt.imshow(cv2.cvtColor(enhanced, cv2.COLOR_BGR2RGB))
+plt.title('Enhanced Color Image')
+plt.axis('off')
 
-        plt.subplot(2, 2, 4)
-        plt.hist(enhanced.ravel(), 256, [0, 256])
-        plt.title('Enhanced Color Histogram')
+plt.subplot(2, 2, 4)
+plt.hist(enhanced.ravel(), 256, [0, 256])
+plt.title('Enhanced Color Histogram')
 
-        plt.tight_layout()
-        plt.show()
+plt.tight_layout()
+plt.show()
 ```
 
 ##  Output
